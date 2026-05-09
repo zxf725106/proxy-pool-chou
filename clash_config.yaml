@@ -1,25 +1,10 @@
 proxies:
 - name: proxy-1
-  port: 8085
-  server: 103.22.99.43
+  port: 80
+  server: 103.125.31.222
   type: http
   udp: true
 - name: proxy-2
-  port: 8080
-  server: 103.124.137.205
-  type: http
-  udp: true
-- name: proxy-3
-  port: 1080
-  server: 47.77.216.82
-  type: http
-  udp: true
-- name: proxy-4
-  port: 80
-  server: 197.221.240.240
-  type: http
-  udp: true
-- name: proxy-5
   port: 80
   server: 143.42.66.91
   type: http
@@ -30,8 +15,5 @@ proxy-groups:
   proxies:
   - proxy-1
   - proxy-2
-  - proxy-3
-  - proxy-4
-  - proxy-5
   type: url-test
   url: http://www.gstatic.com/generate_204
