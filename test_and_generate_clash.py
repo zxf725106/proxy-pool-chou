@@ -53,6 +53,11 @@ def generate_clash_config(proxies, output_file=None):
         proxy_list.append(proxy_config)
 
     clash_config = {
+        'mixed-port': 7890,
+        'allow-lan': True,
+        'mode': 'rule',
+        'log-level': 'info',
+        'external-controller': '127.0.0.1:9090',
         'proxies': proxy_list,
         'proxy-groups': [
             {
@@ -60,8 +65,17 @@ def generate_clash_config(proxies, output_file=None):
                 'type': 'url-test',
                 'proxies': [p['name'] for p in proxy_list],
                 'url': 'http://www.gstatic.com/generate_204',
-                'interval': 300
+                'interval': 300,
+                'tolerance': 100
+            },
+            {
+                'name': 'select',
+                'type': 'select',
+                'proxies': [p['name'] for p in proxy_list]
             }
+        ],
+        'rules': [
+            'MATCH,auto'
         ]
     }
 

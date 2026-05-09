@@ -26,6 +26,11 @@ def export_clash(proxies, output_file=None):
         proxy_list.append(proxy_config)
 
     clash_config = {
+        'mixed-port': 7890,
+        'allow-lan': True,
+        'mode': 'rule',
+        'log-level': 'info',
+        'external-controller': '127.0.0.1:9090',
         'proxies': proxy_list,
         'proxy-groups': [
             {
@@ -33,8 +38,17 @@ def export_clash(proxies, output_file=None):
                 'type': 'url-test',
                 'proxies': [p['name'] for p in proxy_list],
                 'url': 'http://www.gstatic.com/generate_204',
-                'interval': 300
+                'interval': 300,
+                'tolerance': 100
+            },
+            {
+                'name': 'select',
+                'type': 'select',
+                'proxies': [p['name'] for p in proxy_list]
             }
+        ],
+        'rules': [
+            'MATCH,auto'
         ]
     }
 
@@ -43,7 +57,7 @@ def export_clash(proxies, output_file=None):
     if output_file:
         with open(output_file, 'w', encoding='utf-8') as f:
             f.write(content)
-        print(f"✓ 已导出到 Clash 配置: {output_file} ({len(proxies)} 个节点)")
+        print(f"✓ 已导出到 Clash Meta 配置: {output_file} ({len(proxies)} 个节点)")
     else:
         print(content)
 
