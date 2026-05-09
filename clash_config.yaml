@@ -1,27 +1,27 @@
 proxies:
 - name: proxy-1
-  port: 80
-  server: 159.65.221.25
+  port: 8085
+  server: 103.22.99.43
   type: http
   udp: true
 - name: proxy-2
-  port: 9080
-  server: 8.213.215.187
+  port: 8080
+  server: 103.124.137.205
   type: http
   udp: true
 - name: proxy-3
-  port: 1082
-  server: 45.140.147.155
+  port: 1080
+  server: 47.77.216.82
   type: http
   udp: true
 - name: proxy-4
   port: 80
-  server: 41.220.16.209
+  server: 197.221.240.240
   type: http
   udp: true
 - name: proxy-5
-  port: 8080
-  server: 103.174.122.230
+  port: 80
+  server: 143.42.66.91
   type: http
   udp: true
 proxy-groups:
